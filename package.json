@@ -40,5 +40,8 @@
     "grunt-subgrunt": "^0.4.0",
     "grunt-wrap": "chrissrogers/grunt-wrap",
     "grunt-zip": "^0.15.0"
+  },
+  "dependencies": {
+    "coffee-script": "^1.7.1"
   }
 }
