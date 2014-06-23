@@ -113,7 +113,7 @@ module.exports = (grunt) ->
 						moduleName = filepath.substr 'build/raw/dev/src/'.length
 						dirname = path.dirname moduleName
 						extname = path.extname moduleName
-						moduleName = path.join dirname, path.basename moduleName, extname 
+						moduleName = "#{dirname}/#{path.basename moduleName, extname}"
 					
 						if moduleName?
 							["__avocadoModules['#{moduleName}'] = function(module, exports, require, __dirname, __filename) {\n", '};\n']
