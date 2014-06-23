@@ -33,8 +33,8 @@ To install for the browser, you only have to run grunt:
 
 `grunt`
 
-This will generate everything you need to host your application. Just point
-a server like Apache at the avocado-baseline directory!
+This will generate everything you need to host your application. Just open
+index.html with your favorite HTML5-capable browser!
 
 ##### node-webkit (native)
 
