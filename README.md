@@ -36,6 +36,10 @@ To install for the browser, you only have to run grunt:
 This will generate everything you need to host your application. Just open
 index.html with your favorite HTML5-capable browser!
 
+**NOTE** Some browsers will not let you run the HTML locally. If that's the
+case (you just get a black screen), then you will have to serve the directory
+using an HTTP server like apache. Sorry!
+
 ##### node-webkit (native)
 
 First, download node-webkit from
