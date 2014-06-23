@@ -40,17 +40,12 @@ a server like Apache at the avocado-baseline directory!
 
 First, download node-webkit from
 https://github.com/rogerwang/node-webkit#downloads and extract everything in
-the archive to the distribution directory. The actual files required to be
-placed in that directory are:
-
-* libffmpeg.(so|dll)
-* nw
-* nw.pak
-* nwsnapshot
-
+the archive to the **distribution** directory.
 Once you do this, all you need to do is run node-webkit:
 
 `npm start`
+
+or, if you're on windows, go into the folder and launch **run.bat**!
 
 I'll write more documentation on how to distribute your apps once I figure out
 a nice automatic way to do so.
