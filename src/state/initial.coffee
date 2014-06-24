@@ -18,13 +18,13 @@ module.exports = class extends AbstractState
 				switch keyCode
 					
 					# F5 - Reload
-					when input.KeyCode.F5 then window_.reloadDev()
+					when input.Key.F5 then window_.reloadDev()
 			
 					# F11 - Fullscreen
-					when input.KeyCode.F11 then window_.toggleFullscreen()
+					when input.Key.F11 then window_.toggleFullscreen()
 					
 					# F12 - Dev tools
-					when input.KeyCode.F12
+					when input.Key.F12
 						
 						if window_.isDevToolsOpen()
 							window_.closeDevTools()
@@ -37,6 +37,6 @@ module.exports = class extends AbstractState
 			
 			switch keyCode
 			
-				when input.KeyCode.Escape then @quit()
+				when input.Key.Escape then @quit()
 				
 		@transitionToState 'splash'
