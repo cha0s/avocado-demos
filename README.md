@@ -2,7 +2,7 @@
 
 <img align="right" src="https://raw.github.com/cha0s/avocado/master/logo.png">
 
-## Wanna start making games?
+#### Wanna start making games?
 
 This is the easiest way to dive right into making games with
 [avocado](https://github.com/cha0s/avocado)!
