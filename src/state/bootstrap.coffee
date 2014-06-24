@@ -4,11 +4,13 @@ Animation = require 'avo/graphics/animation'
 color = require 'avo/graphics/color'
 Entity = require 'avo/entity'
 Font = require 'avo/graphics/font'
+input = require 'avo/input'
 PIXI = require 'avo/vendor/pixi'
 Promise = require 'avo/vendor/bluebird'
 SortedList = require 'avo/vendor/SortedList'
 Sound = require 'avo/sound'
 Sprite = require 'avo/graphics/sprite'
+Stage = require 'avo/graphics/stage'
 Text = require 'avo/graphics/text'
 window = require 'avo/graphics/window'
 
@@ -20,72 +22,17 @@ module.exports = class extends AbstractState
 
 	initialize: ->
 		
-		@_stage = new PIXI.Stage()
+		@_stage = new Stage()
+		@_container = new Stage new PIXI.DisplayObjectContainer()
+		
+		@_container.setPosition [100, 100]
 		
 		[width, height] = [60, 60]
 		
 		@_entity = new Entity()
 		@_entity.extendTraits [
 			type: 'corporeal'
-		,
-			type: 'behavioral'
-			state:
-				routines:
-					initial:
-					
-						rules: []
-						actions: [
-						
-							selector: 'entity:parallel'
-							args: [
-								[
-									actions: [
-										selector: 'entity:lfo'
-										args: [
-											[
-												literal:
-													x:
-													
-														frequency: 2
-														magnitude: 20
-														median: 400
-														modulators: [
-															'Sine'
-														]
-														
-											,
-												literal: 2000						
-											]
-										]
-									,
-										selector: 'entity:lfo'
-										args: [
-											[
-												literal:
-													y:
-													
-														frequency: .25
-														magnitude: 4
-														median: 270
-														modulators: [
-															'Sine'
-														]
-														
-											,
-												literal: 2000						
-											]
-										]
-									]
-								]
-							]
-						]
 		]
-		
-		context = @_entity.context()
-		context['entity'] = @_entity
-		context['test'] = foo: -> console.log 'yay'
-		
-		@_entity.setX 400
 		
 		Promise.all([
 			
@@ -118,7 +65,8 @@ module.exports = class extends AbstractState
 					
 			@_layerView = new LayerView()
 			@_layerView.setLayer layer
-			@_layerView.addToStage @_stage
+			
+			@_stage.addChild @_layerView.container()
 			
 			
 			text = new Text "Hello!"
@@ -127,19 +75,18 @@ module.exports = class extends AbstractState
 			text.setStrokeColor color 0, 0, 0
 			text.setStrokeThickness 2
 			
-			text.addToStage @_stage
+			@_stage.addChild text
 			
 			
 			animation.setPosition [400, 400]
 			animation.start()
 			
-			animation.addToStage @_stage
+			@_container.addChild animation.sprite()
+			
+			@_stage.addChild @_container
 			
 	tick: ->
 		
-		@_entity.tick()
-		@_layerView.setPosition @_entity.position()
-	
 	render: (renderer) ->
 		
 		renderer.render @_stage
