@@ -33,6 +33,11 @@ To install for the browser, you only have to run grunt:
 
 `grunt`
 
+**NOTE** If you use Ubuntu and installed node from the package manager, the
+binary is named `nodejs` and not `node`. See
+https://github.com/joyent/node/issues/3911#issuecomment-8956154 for how to
+fix this issue.
+
 This will generate everything you need to host your application. Just open
 index.html with your favorite HTML5-capable browser!
 
