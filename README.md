@@ -2,7 +2,7 @@
 
 <img align="right" src="https://raw.github.com/cha0s/avocado/master/logo.png">
 
-### Wanna start making games?
+## Wanna start making games?
 
 This is the easiest way to dive right into making games with
 [avocado](https://github.com/cha0s/avocado)!
@@ -14,7 +14,7 @@ If you want to support modern HTML5 capable browsers, that's all you need!
 However, if you'd like to run your game application natively, you will need
 [node-webkit](https://github.com/rogerwang/node-webkit).
 
-#### Installing
+## Installing
 
 First get the source either by cloning this repository or downloading the zip
 file from the bar on the right --->
@@ -27,7 +27,7 @@ then, install all the module dependencies:
 
 `npm install`
 
-##### HTML5 (browser)
+### HTML5 (browser)
 
 To install for the browser, you only have to run grunt:
 
@@ -45,7 +45,7 @@ index.html with your favorite HTML5-capable browser!
 case (you just get a black screen), then you will have to serve the directory
 using an HTTP server like apache. Sorry!
 
-##### node-webkit (native)
+### node-webkit (native)
 
 First, download node-webkit from
 https://github.com/rogerwang/node-webkit#downloads and extract everything in
