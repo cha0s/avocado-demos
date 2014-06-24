@@ -6,8 +6,7 @@ module.exports = class extends AbstractState
 	
 	initialize: ->
 		
-		# node-webkit keybindings.
-		if global?
+		if 'node-webkit' config.get 'platform'
 		
 			{Window} = global.window.nwDispatcher.requireNwGui()
 			window_ = Window.get()
@@ -16,7 +15,10 @@ module.exports = class extends AbstractState
 				return if repeat
 			
 				switch keyCode
-	
+					
+					# F5 - Reload
+					when input.KeyCode.F5 then window_.reloadDev()
+			
 					# F11 - Fullscreen
 					when input.KeyCode.F11 then window_.toggleFullscreen()
 					
@@ -35,5 +37,5 @@ module.exports = class extends AbstractState
 			switch keyCode
 			
 				when input.KeyCode.Escape then @quit()
-			
+				
 		@transitionToState 'splash'

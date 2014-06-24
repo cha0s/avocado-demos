@@ -4,8 +4,8 @@
   "description": "Avocado scaffolding, make games!",
   "main": "index-nw.html",
   "scripts": {
-    "nw": "NODE_PATH=src:avocado/src distribution/nw `pwd`",
-    "nw-production": "NODE_PATH=src:avocado/build/raw/production distribution/nw `pwd`",
+    "nw": "NODE_PATH=src:avocado/src:node_modules distribution/nw `pwd`",
+    "nw-production": "NODE_PATH=src:avocado/build/raw/production:node_modules distribution/nw `pwd`",
     "start": "npm run-script nw",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,8 +14,8 @@
     "url": "git://github.com/cha0s/avocado-baseline.git"
   },
   "window": {
-    "toolbar": false,
-    "show": true
+    "show": true,
+    "toolbar": false
   },
   "author": "cha0s",
   "keywords": [
