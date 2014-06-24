@@ -1,12 +1,13 @@
 
 AbstractState = require 'avo/state/abstractState'
+config = require 'avo/config'
 input = require 'avo/input'
 
 module.exports = class extends AbstractState
 	
 	initialize: ->
 		
-		if 'node-webkit' config.get 'platform'
+		if 'node-webkit' is config.get 'platform'
 		
 			{Window} = global.window.nwDispatcher.requireNwGui()
 			window_ = Window.get()

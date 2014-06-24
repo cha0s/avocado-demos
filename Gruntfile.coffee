@@ -128,7 +128,7 @@ module.exports = (grunt) ->
 				]
 				
 				options:
-					wrapper: ['(function() {\n', "require('avo/main');\n\n})();"]
+					wrapper: ['(function() {\n', "require('avo');\n\n})();"]
 			
 		zip:
 			nw:
