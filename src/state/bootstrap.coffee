@@ -2,6 +2,7 @@
 AbstractState = require 'avo/state/abstractState'
 Animation = require 'avo/graphics/animation'
 color = require 'avo/graphics/color'
+Container = require 'avo/graphics/container'
 Entity = require 'avo/entity'
 Font = require 'avo/graphics/font'
 input = require 'avo/input'
@@ -12,6 +13,8 @@ Sound = require 'avo/sound'
 Sprite = require 'avo/graphics/sprite'
 Stage = require 'avo/graphics/stage'
 Text = require 'avo/graphics/text'
+timing = require 'avo/timing'
+Vector = require 'avo/extension/vector'
 window = require 'avo/graphics/window'
 
 Environment = require 'avo/environment/2D'
@@ -23,18 +26,38 @@ module.exports = class extends AbstractState
 	initialize: ->
 		
 		@_stage = new Stage()
-		@_container = new Stage new PIXI.DisplayObjectContainer()
 		
-		@_container.setPosition [100, 100]
+		# How we display a camera.
+		@_container = new Container()
+		
+		input.registerKeyMovement()
+		
+		input.registerGamepadAxisMovement()
+		input.registerGamepadButtonMovement()
 		
 		[width, height] = [60, 60]
 		
-		@_entity = new Entity()
-		@_entity.extendTraits [
-			type: 'corporeal'
-		]
+		entity = new Entity()
 		
 		Promise.all([
+			
+			entity.extendTraits [
+				type: 'corporeal'
+				state:
+					directionCount: 4
+			,
+				type: 'mobile'
+				state:
+					movingSpeed: 700
+			,
+				type: 'visible'
+			,
+				type: 'animated'
+				state:
+					animations:
+						initial: uri: '/animations/environment-initial.animation.json'
+						moving: uri: '/animations/environment-moving.animation.json'
+			]
 			
 			(new Environment()).fromObject(
 				rooms: [
@@ -43,13 +66,9 @@ module.exports = class extends AbstractState
 				]
 			)
 				
-			Font.load('/font/DroidSans.ttf')
+		]).then ([@_entity, environment, animation]) =>
 			
-			Animation.load(
-				'/animations/environment-initial.animation.json'
-			)
-			
-		]).then ([environment, text, animation]) =>
+			@_entity.setPosition [200, 200]
 	
 			room = environment.room 0
 			
@@ -66,26 +85,16 @@ module.exports = class extends AbstractState
 			@_layerView = new LayerView()
 			@_layerView.setLayer layer
 			
-			@_stage.addChild @_layerView.container()
-			
-			
-			text = new Text "Hello!"
-			
-			text.setFillColor color 255, 255, 255, .4
-			text.setStrokeColor color 0, 0, 0
-			text.setStrokeThickness 2
-			
-			@_stage.addChild text
-			
-			
-			animation.setPosition [400, 400]
-			animation.start()
-			
-			@_container.addChild animation.sprite()
+			@_container.addChild @_layerView.container()
+			@_container.addChild @_entity.optional 'localContainer'
 			
 			@_stage.addChild @_container
 			
 	tick: ->
+		
+		@_entity.move input.unitMovement()
+		
+		@_entity.tick()
 		
 	render: (renderer) ->
 		
