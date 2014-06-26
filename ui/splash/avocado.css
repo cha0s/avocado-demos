@@ -1,0 +1,13 @@
+
+.splash-avocado {
+  background-color: #FFFFFF;
+}
+
+.splash-avocado .logo {
+  background-image: url('../../resource/logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+}

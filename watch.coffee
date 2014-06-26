@@ -7,6 +7,7 @@ app = null
 
 env = process.env
 env.NODE_PATH = 'src:avocado/src:node_modules'
+env.watching = true
 
 options =
 	

@@ -1,0 +1,14 @@
+
+.loading {
+  height: 100%;
+  width: 100%;
+}
+
+.loading .text {
+  bottom: 0;
+  color: #FFFFFF;
+  font-size: 100px;
+  margin: 1em;
+  position: absolute;
+  right: 0;
+}

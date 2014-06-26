@@ -1,0 +1,35 @@
+
+.main-menu {
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .75);
+  background-image: url('../resource/logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-menu h1 {
+  font-size: 70px;
+  text-align: center;
+}
+
+.main-menu h2 {
+  font-size: 50px;
+  text-align: center;
+}
+
+.main-menu a {
+  font-size: 60px;
+}
+
+.main-menu .demos {
+  float: left;
+  margin-top: 2em;
+  text-align: center;  
+  width: 50%;
+}
+
+.main-menu .demos li {
+  margin-bottom: 1em;
+}

@@ -15,25 +15,24 @@ Stage = require 'avo/graphics/stage'
 Text = require 'avo/graphics/text'
 timing = require 'avo/timing'
 Vector = require 'avo/extension/vector'
-window = require 'avo/graphics/window'
+window_ = require 'avo/graphics/window'
 
 Environment = require 'avo/environment/2D'
 Layer = require 'avo/environment/2D/tileLayer'
 LayerView = require 'avo/environment/2D/layerView'
 
-module.exports = class extends AbstractState
+module.exports = class WalkAround extends AbstractState
 
 	initialize: ->
+	
+		@loading.show()
 		
 		@_stage = new Stage()
 		
 		# How we display a camera.
 		@_container = new Container()
 		
-		input.registerKeyMovement()
-		
-		input.registerGamepadAxisMovement()
-		input.registerGamepadButtonMovement()
+		input.registerMovement()
 		
 		[width, height] = [60, 60]
 		
@@ -89,6 +88,20 @@ module.exports = class extends AbstractState
 			@_container.addChild @_entity.optional 'localContainer'
 			
 			@_stage.addChild @_container
+			
+	enter: ->
+		
+		@loading.hide()
+		
+		input.on 'keyDown.WalkAround', ({keyCode, preventDefault, repeat}) =>
+			
+			switch keyCode
+			
+				when input.Key.Escape then @transitionToState 'main-menu'
+		
+	leave: ->
+		
+		input.off '.WalkAround'
 			
 	tick: ->
 		

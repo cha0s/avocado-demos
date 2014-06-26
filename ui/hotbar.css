@@ -1,0 +1,37 @@
+
+.boxes {
+  width: 524px;
+}
+
+.boxes .box {
+  border-radius: 4px;
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin: 4px;
+  margin-right: 0px;
+  position: relative;
+  
+  background-color: rgba(255, 255, 255, .5);
+  background-image: url(../resource/logo-hotbar.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.boxes .box .number {
+  font-size: .75em;
+  position: absolute;
+  top: .125em;
+  left: .25em;
+}
+
+.boxes .box:hover {
+  background-color: rgba(255, 255, 255, .75);
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+
+.boxes .box:last-child {
+  margin: 4px;
+}

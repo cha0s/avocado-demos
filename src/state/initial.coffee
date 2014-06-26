@@ -2,6 +2,7 @@
 AbstractState = require 'avo/state/abstractState'
 config = require 'avo/config'
 input = require 'avo/input'
+ui = require 'avo/ui'
 
 module.exports = class extends AbstractState
 	
@@ -32,11 +33,10 @@ module.exports = class extends AbstractState
 							window_.showDevTools()
 					
 				preventDefault()
-		
-		input.on 'keyDown', ({keyCode, preventDefault, repeat}) =>
-			
-			switch keyCode
-			
-				when input.Key.Escape then @quit()
 				
-		@transitionToState 'splash'
+		# Create a loading screen for when states are initializing.
+		ui.loadNode('/loading.html').then (node) =>
+			
+			AbstractState::loading = node
+		
+			@transitionToState 'splash'

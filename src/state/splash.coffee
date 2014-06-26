@@ -1,39 +1,18 @@
 
-Image = require 'avo/graphics/image'
-PIXI = require 'avo/vendor/pixi'
-Sprite = require 'avo/graphics/sprite'
-
 AbstractState = require 'avo/state/abstractState'
-color = require 'avo/graphics/color'
-config = require 'avo/config'
-Stage = require 'avo/graphics/stage'
-Vector = require 'avo/extension/vector'
-window_ = require 'avo/graphics/window'
+ui = require 'avo/ui'
 
 module.exports = class extends AbstractState
 	
 	initialize: ->
 		
-		@_stage = new Stage()
-		@_stage.setBackgroundColor color 255, 255, 255
+		ui.load('splash/avocado').then (@_splash) =>
+			@_splash.fadeUp().then =>
+				setTimeout(
+					=> @transitionToState 'main-menu'
+					250
+				)
+			
+	leave: ->
 		
-		Image.load('/logo.png').then (image) =>
-			
-			resolution = config.get 'graphics:resolution'
-			
-			position = Vector.scale Vector.sub(resolution, image.size()), .5
-			
-			sprite = new Sprite image
-			sprite.setPosition position
-			sprite.setAlpha 0
-			sprite.addToStage @_stage
-			
-			setTimeout(
-				=> sprite.transition(alpha: 1, 750).promise.then =>
-					@transitionToState 'bootstrap'
-				250
-			)
-			
-	render: (renderer) ->
-		
-		@_stage.renderWith renderer
+		@_splash.hide()
