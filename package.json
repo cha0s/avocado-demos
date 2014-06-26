@@ -5,6 +5,7 @@
   "main": "index-nw.html",
   "scripts": {
     "nw": "NODE_PATH=src:avocado/src:node_modules distribution/nw `pwd`",
+    "nw-dev": "coffee watch.coffee",
     "nw-production": "NODE_PATH=src:avocado/build/raw/production:node_modules distribution/nw `pwd`",
     "start": "npm run-script nw",
     "test": "echo \"Error: no test specified\" && exit 1"
