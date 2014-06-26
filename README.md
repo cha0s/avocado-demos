@@ -47,7 +47,7 @@ using an HTTP server like apache. Sorry!
 
 ### node-webkit (native)
 
-First, download node-webkit from
+First, download node-webkit **version 0.8.6** from
 https://github.com/rogerwang/node-webkit#downloads and extract everything in
 the archive to the **distribution** directory.
 Once you do this, all you need to do is run node-webkit:
