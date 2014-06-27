@@ -1,4 +1,4 @@
-# Avocado baseline
+# Avocado demos
 
 <img align="right" src="https://raw.github.com/cha0s/avocado/master/logo.png">
 
