@@ -7,6 +7,9 @@
 This is the easiest way to dive right into making games with
 [avocado](https://github.com/cha0s/avocado)!
 
+If you have no idea what you're doing, you should probably check out the
+[Avocado demos](https://github.com/cha0s/avocado-demos) project first! :)
+
 You're going to at least need [Node.js](http://nodejs.org/) and
 [Grunt](http://gruntjs.com/).
 

@@ -33,10 +33,5 @@ module.exports = class extends AbstractState
 							window_.showDevTools()
 					
 				preventDefault()
-				
-		# Create a loading screen for when states are initializing.
-		ui.loadNode('/loading.html').then (node) =>
 			
-			AbstractState::loading = node
-		
-			@transitionToState 'splash'
+		@transitionToState 'main'
