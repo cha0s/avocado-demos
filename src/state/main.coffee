@@ -1,21 +1,35 @@
 
 AbstractState = require 'avo/state/abstractState'
+input = require 'avo/input'
+ui = require 'avo/ui'
 
-module.exports = class extends AbstractState
-	
+module.exports = class MainMenu extends AbstractState
+
 	initialize: ->
 		
-		display = new (require 'avo/ui/node') """
-<h1 style="font-size: 70px">Baseline</h1>
-<p style="font-size: 40px">
-	If you don't know where to start, you might consider checking out
-	<a href="https://github.com/cha0s/avocado-baseline">the avocado demos</a>
-	for an idea of the kind of stuff you can do!
-</p>
-"""
+		self = this
 		
-		display.css 'background-color', 'white'
-		display.show()
+		ui.load('main-menu').then (@_mainMenu) =>
+
+			@_mainMenu.on 'clickedDemo', (state) =>
+				
+				@loading.show()
+				@transitionToState state
 		
-		uiContainer = require('avo/graphics/window').uiContainer()
-		uiContainer.appendChild display.element()		
+	enter: ->
+		
+		@loading.hide()
+		
+		input.on 'keyDown.MainMenu', ({keyCode, preventDefault, repeat}) =>
+			
+			switch keyCode
+			
+				when input.Key.Escape then @quit()
+		
+		@_mainMenu.show()
+		
+	leave: ->
+		
+		input.off '.MainMenu'
+		
+		@_mainMenu.hide()

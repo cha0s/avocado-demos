@@ -2,13 +2,10 @@
 
 <img align="right" src="https://raw.github.com/cha0s/avocado/master/logo.png">
 
-#### Wanna start making games?
+#### Wanna see what avocado can do?
 
-This is the easiest way to dive right into making games with
-[avocado](https://github.com/cha0s/avocado)!
-
-If you have no idea what you're doing, you should probably check out the
-[Avocado demos](https://github.com/cha0s/avocado-demos) project first! :)
+This is the easiest way to check out what
+[avocado](https://github.com/cha0s/avocado) can do!
 
 You're going to at least need [Node.js](http://nodejs.org/) and
 [Grunt](http://gruntjs.com/).
@@ -58,6 +55,3 @@ Once you do this, all you need to do is run node-webkit:
 `npm start`
 
 or, if you're on windows, go into the folder and launch **run.bat**!
-
-I'll write more documentation on how to distribute your apps once I figure out
-a nice automatic way to do so.
